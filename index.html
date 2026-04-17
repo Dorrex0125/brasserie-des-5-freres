@@ -1,0 +1,692 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brasserie des 5 Frères - Restaurant traditionnel français à Ivry-sur-Seine. Cuisine classique, ambiance chaleureuse et conviviale.">
+    <meta name="keywords" content="restaurant, brasserie, français, Ivry-sur-Seine, cuisine traditionnelle">
+    <meta name="author" content="Brasserie des 5 Frères">
+    <title>Brasserie des 5 Frères - Ivry-sur-Seine</title>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Brasserie des 5 Frères",
+        "image": "https://via.placeholder.com/1200x600?text=Brasserie+des+5+Freres",
+        "description": "Restaurant traditionnel français proposant une cuisine classique dans une ambiance chaleureuse et conviviale.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "36 Av. Pierre Semard",
+            "addressLocality": "Ivry-sur-Seine",
+            "postalCode": "94200",
+            "addressCountry": "FR"
+        },
+        "telephone": "+33972858441",
+        "servesCuisine": "French",
+        "priceRange": "€€",
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "11:30",
+            "closes": "23:00"
+        }
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B0000;
+            --secondary: #D4AF37;
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --text: #333333;
+            --white: #ffffff;
+            --accent: #c41e3a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Georgia', 'Garamond', serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--white);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .header-info {
+            font-size: 0.9rem;
+            text-align: right;
+        }
+
+        .header-phone {
+            display: block;
+            color: var(--secondary);
+            font-weight: bold;
+            margin-top: 0.3rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(139, 0, 0, 0.85), rgba(139, 0, 0, 0.85)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="40" fill="%23D4AF37" opacity="0.05"/></pattern></defs><rect width="1200" height="600" fill="%238B0000"/><rect width="1200" height="600" fill="url(%23pattern)"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 8rem 2rem;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background-color: #e6c450;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--light);
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            height: 350px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+            box-shadow: 0 8px 16px rgba(139, 0, 0, 0.2);
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 4rem 2rem;
+        }
+
+        .menu h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 1rem;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .menu-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-category {
+            background: var(--white);
+            border: 2px solid var(--primary);
+            padding: 2rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-category:hover {
+            box-shadow: 0 8px 16px rgba(139, 0, 0, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .menu-category h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
+        }
+
+        .menu-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dotted var(--text);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .item-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.3rem;
+        }
+
+        .item-price {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .item-description {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 0.3rem;
+        }
+
+        /* Info Section */
+        .info {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+        }
+
+        .info-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .info-block h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-block p {
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .info-block a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .info-block a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 1rem;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-button {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .contact-button:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(139, 0, 0, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            .info-content {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .header-info {
+                text-align: center;
+            }
+
+            .menu-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .about-text h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .about-text h2,
+            .menu h2,
+            .contact h2 {
+                font-size: 1.8rem;
+            }
+
+            .menu-category h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                🍷 Brasserie des <span>5 Frères</span>
+            </div>
+            <div class="header-info">
+                <div>Ivry-sur-Seine</div>
+                <span class="header-phone">📞 97 285 84 41</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Brasserie des 5 Frères</h1>
+        <p>Une cuisine traditionnelle française dans une ambiance chaleureuse et conviviale</p>
+        <a href="#contact" class="cta-button">Nous Contacter</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>À Propos</h2>
+                <p>
+                    La Brasserie des 5 Frères est un établissement traditionnel au cœur d'Ivry-sur-Seine, 
+                    où la passion pour la cuisine française se transmet depuis des générations.
+                </p>
+                <p>
+                    Nous proposons une cuisine classique et raffinée, préparée avec des ingrédients frais 
+                    et de qualité. Notre équipe dévouée vous accueille dans une atmosphère authentique et conviviale, 
+                    idéale pour un moment en famille, entre amis ou en affaires.
+                </p>
+                <p>
+                    Découvrez nos spécialités de cuisine française et laissez-vous séduire par notre sélection 
+                    de vins fins qui accompagnent parfaitement vos repas.
+                </p>
+            </div>
+            <div class="about-image">
+                🍽️
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu">
+        <div class="container">
+            <h2>Notre Carte</h2>
+            <div class="menu-categories">
+                <!-- Entrées -->
+                <div class="menu-category">
+                    <h3>Entrées</h3>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Escargots de Bourgogne</span>
+                            <span class="item-price">12,50€</span>
+                        </div>
+                        <div class="item-description">6 escargots beurre persil, sauce d'excellence</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Foie Gras Poêlé</span>
+                            <span class="item-price">18,00€</span>
+                        </div>
+                        <div class="item-description">Avec pain d'épice et fruits secs</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Soupe à l'Oignon</span>
+                            <span class="item-price">8,50€</span>
+                        </div>
+                        <div class="item-description">Gratinée au fromage Gruyère</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Terrine de Campagne</span>
+                            <span class="item-price">9,00€</span>
+                        </div>
+                        <div class="item-description">Maison avec cornichons et moutarde</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Huîtres Fines</span>
+                            <span class="item-price">15,00€</span>
+                        </div>
+                        <div class="item-description">La douzaine - Ouverture à la demande</div>
+                    </div>
+                </div>
+
+                <!-- Plats Principaux -->
+                <div class="menu-category">
+                    <h3>Plats Principaux</h3>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Coq au Vin</span>
+                            <span class="item-price">22,50€</span>
+                        </div>
+                        <div class="item-description">Sauce bourguignonne, champignons et lardons</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Steak Frites</span>
+                            <span class="item-price">24,00€</span>
+                        </div>
+                        <div class="item-description">Viande de qualité premium, sauce béarnaise</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Sole Meunière</span>
+                            <span class="item-price">25,50€</span>
+                        </div>
+                        <div class="item-description">Beurre blanc, légumes de saison</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Blanquette de Veau</span>
+                            <span class="item-price">21,00€</span>
+                        </div>
+                        <div class="item-description">Sauce crémeuse champignons et oignons</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Magret de Canard</span>
+                            <span class="item-price">23,00€</span>
+                        </div>
+                        <div class="item-description">Sauce aux cerises, sauce réduction</div>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="menu-category">
+                    <h3>Desserts</h3>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Crème Brûlée</span>
+                            <span class="item-price">8,00€</span>
+                        </div>
+                        <div class="item-description">Vanille de Madagascar, sucre caramélisé</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Tarte Tatin</span>
+                            <span class="item-price">8,50€</span>
+                        </div>
+                        <div class="item-description">Pommes caramélisées et pâte feuilletée</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Mousse au Chocolat</span>
+                            <span class="item-price">7,50€</span>
+                        </div>
+                        <div class="item-description">Chocolat noir 70%, légère et aérienne</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Profiteroles</span>
+                            <span class="item-price">8,00€</span>
+                        </div>
+                        <div class="item-description">Crème glacée vanille, sauce chocolat chaud</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">
+                            <span>Clafoutis aux Cerises</span>
+                            <span class="item-price">7,50€</span>
+                        </div>
+                        <div class="item-description">Spécialité maison, servi tiède</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info">
+        <div class="info-content">
+            <div class="info-block">
+                <h3>📍 Localisation</h3>
+                <p>36 Av. Pierre Semard</p>
+                <p>94200 Ivry-sur-Seine, France</p>
+                <p>
+                    <a href="https://www.google.com/maps/search/Brasserie+des+5+Freres+36+Av+Pierre+Semard+94200+Ivry-sur-Seine" target="_blank" rel="noopener noreferrer">
+                        Voir sur Google Maps →
+                    </a>
+                </p>
+            </div>
+            <div class="info-block">
+                <h3>📞 Contact</h3>
+                <p>Téléphone: <strong>97 285 84 41</strong></p>
+                <p>Lundi - Samedi: 11h30 - 23h00</p>
+                <p>Dimanche: Fermé</p>
+                <p>
+                    <a href="tel:+33972858441">
+                        Appeler maintenant →
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Nous Contacter</h2>
+            <div class="contact-content">
+                <p>
+                    Envie de découvrir la cuisine traditionnelle française de la Brasserie des 5 Frères? 
+                    N'hésitez pas à nous contacter pour réserver une table ou pour plus d'informations.
+                </p>
+                <a href="https://www.google.com/maps/search/Brasserie+des+5+Freres+36+Av+Pierre+Semard+94200+Ivry-sur-Seine" target="_blank" rel="noopener noreferrer" class="contact-button">
+                    Réserver sur Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Brasserie des 5 Frères - 36 Av. Pierre Semard, 94200 Ivry-sur-Seine</p>
+        <p>Tous droits réservés | Cuisine française traditionnelle depuis des générations</p>
+    </footer>
+</body>
+</html>
+```
